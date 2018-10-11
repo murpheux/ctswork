@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Test2</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="css/site.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <h1>Test 2</h1>
+
+    <div id="checkControls">
+        <input type="checkbox" name="vehicle" value="Car"> Car<br>
+        <input type="checkbox" name="vehicle" value="Truck"> Truck<br>
+        <input type="checkbox" name="vehicle" value="Crane"> Crane<br>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm car">
+                <img src="images/car.png">
+            </div>
+            <div class="col-sm truck">
+                <img src="images/truck.png">
+            </div>
+            <div class="col-sm crane">
+                <img src="images/crane.png">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            // hide all image on start
+            $(".col-sm img").hide();
+
+            // hing onchange event to checkbox
+            $("#checkControls input:checkbox").change(function () {
+                toggle_image(this.checked, this.value)
+            });
+        });
+
+
+        toggle_image = (status, imageVal) =>  {
+            switch(imageVal) {
+                case 'Car':
+                case 'Truck':
+                case 'Crane':
+                    status ? $(`.${imageVal.toLowerCase()} img`).show() : $(`.${imageVal.toLowerCase()} img`).hide();
+                    break;
+            }
+        };
+    </script>
+
+</body>
+
+</html>
